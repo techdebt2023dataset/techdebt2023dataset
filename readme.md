@@ -16,7 +16,9 @@ The whole directory goes like the following:
 │     ├─Maintainability Evaluation Results    
 │     ├─Architecture Decay Detection Results
 |
-└─Demo video      
+└─Demo Video  
+|
+└─Knowledge Base  
 |
 └─Scripts 
 │  │─Setup
@@ -52,6 +54,8 @@ This directory contains two files: `detection results.xlsx` and `maintenance cos
 ## Demo Video
 
 This directory contains the demo video of our tool-dbMITPlus.
+
+## Knowledge Base
 
 ## Scripts
 
