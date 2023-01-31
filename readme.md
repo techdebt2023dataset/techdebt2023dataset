@@ -8,8 +8,6 @@ The whole directory goes like the following:
 
 ```
 ├─README.md
-│              
-│─Scripts
 │	
 ├─Data         
 │  │─Setup
