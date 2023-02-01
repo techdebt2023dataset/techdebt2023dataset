@@ -2,7 +2,7 @@
 
 Based on the maintainability model defined by ISO/IEC 25010, we construct a forest structure as a knowledge base, combing widely-adopted code-level metrics from the developer side. All the collected metrics correspond to the nodes in the forest structure, where each link between nodes denotes their relation.
 
-![metrics](C:\Users\zyy\Desktop\techdebt2023dataset\Knowledge Base\img\metrics.png)
+![metrics](.\img\metrics.png)
 
 ## Metrics
 
