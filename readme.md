@@ -97,6 +97,8 @@ In this video, LineageOS is used as a case to introduce the four modules of dbMI
 
 ## Knowledge Base
 
+The key of dbMIT is the forest structure of code-level metrics, making it easy for developers to understand the measurements (i.e.,comprehensibility), explain why the detected code changes are potential contributors to the decay (i.e., interpretability), and indicate how to resolve them (i.e., indicative-lity). In the `knowledge base.md`, the forest structure and metrics are described in detail.
+
 ## Scripts
 
 ### Setup

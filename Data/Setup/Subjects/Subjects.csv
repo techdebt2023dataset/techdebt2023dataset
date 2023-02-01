@@ -63,7 +63,7 @@ train-ticket,309862,2033,323,246,505,2264,microservice-based
 lineage/base(lineage-16.0),3211309,19906,371425,754,8307,269544,android-based
 lineage/base(lineage-17.0),3654582,22291,419035,863,9603,287107,android-based
 lineage/base(lineage-17.1),3716241,22789,426617,864,9657,288285,android-based
-lineage/base(lineage-18.0),,,482369,1011,10906,306323,android-based
+lineage/base(lineage-18.0),4141704,26375,482369,1011,10906,306323,android-based
 lineage/base(lineage-18.1),4190090,26713,499516,1016,10963,307387,android-based
 lineage/base(lineage-19.1),4576171,27685,663184,1154,12355,325879,android-based
 CalyxOS/base(android11),4169261,26699,482229,1012,10943,306972,android-based
