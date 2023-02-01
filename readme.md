@@ -23,6 +23,8 @@ The whole directory goes like the following:
 │	
 ├─Scripts
 │  ├─Setup
+|
+└─References  
 ```
 
 ## Data
@@ -31,10 +33,9 @@ The whole directory goes like the following:
 
 This directory contains the preliminary data to conduct the following experiments.
 
-1. #### Subjects
+- #### Subjects
 
-
-This directory contains information about all projects mentioned in the paper. It includes loc and the number of files, commits, modules, classes, methods of the project (the latest version is obtained for all multi-version projects).
+This directory contains a csv file named `Subjects.csv`. This file shows the information about all projects mentioned in the paper. We selected projects with diverse sizes and diverse do-mains(android-based projects, microservice-based projects and other projects studied by related work).So in this file, it includes `loc` , `#files`, `#commits`, `#modules`, `#classes` , `#methods` and `source` of the project (the latest version is obtained for all multi-version projects).Please note that our experiments focus on Java projects.
 
 
 
@@ -42,16 +43,23 @@ This directory contains information about all projects mentioned in the paper. I
 
 This directory contains all experimental results.
 
-#### Maintainability Evaluation Results
+- #### Maintainability Evaluation Results
 
-This directory contains the file of evaluation results. The SCORE and DL values of 65 projects are counted in the file.
 
-#### Architecture Decay Detection Results
+We conducted measurements for the latest versions for all of the collected projects, using the metrics integrated into our dbMIT. This directory contains a csv file named `evaluation results.csv` and 5 sample results. 
 
-This directory contains two files: `detection results.xlsx` and `maintenance cost.xlsx`.
+​	***evaluation results.csv**:* The SCORE and DL values of all projects are counted in the file. Since dbMIT considered multiple metrics, we computed the SCORE to obtain a weighted average measurement. We also computed the DL for these projects, a metric proposed by Mo et al.[1] to assess the architectural maintainability. A bigger value of DL or SCORE indicates a better maintainability of the software. Based on the results by DL and SCORE, we observed how the measurements will distribute over all of the subjects.
 
-- **detection results.xlsx**: This file contains statistical number of all root causes entities.
-- **maintenance cost.xlsx**: This file contains the maintenance cost of 6 projects.
+​	**sample results:** We use `apollo`, `argouml`, `LineageOS`, `piggymetrics` and `servicecomb-java-chassis` as samples to show our evaluation results. In addition to piggymetrics , the other four projects are multi-version projects. In their folder, all versions evaluated are included. The evaluation results of each project or version contain two csv files: `measure_result_class.csv` 和`measure_result_method.csv`. There are 67 columns in `measure_result_class.csv`, including the calculation results of all project-level, module-level and class-level metrics. `measure_result_method.csv` contains 15 columns, including the calculation results of all method-level metrics.
+
+- #### Architecture Decay Detection Results
+
+
+This directory contains two files: `detection results.csv` and `maintenance cost.csv`.
+
+​		***detection results.csv**:* This file contains statistical number of all root causes entities.We executed the dbMIT on multiple versions of the collected subjects. The problematic methods or classes can be detected by using detection rules defined in Section II of the paper. 
+
+​		***maintenance cost.csv**:* This file contains the maintenance cost of 6 projects. We employed three measures: `#commit`, `#changeLoc`, and `#author` as the ground-truth maintenance cost. `#commit` evaluates the number of commits that file entities participated in the software evolution. `#author` computes the number of developers by which a file entity was modified. `#changeLoc` counts the code churn (added or deleted code lines) of a file in the revision history. A bigger value indicates a higher maintenance cost. `mc(A)` denotes the result of the three measures averaged on a set of problematic entities, which are detected by dbMIT. `mc(B)`denotes the results by the three measures averaged on a set of non-problematic entities. `P = mc(A)/mc(B)` denotes the rate of `mc(A)` to `mc(B)`. If the value of P is bigger than 1.0, it means that the problematic code reported by dbMIT indeed incurred more maintenance efforts.
 
 ## Demo Video
 
@@ -94,3 +102,7 @@ In this video, LineageOS is used as a case to introduce the four modules of dbMI
 ### Setup
 
 This directory contains a python script `get_github_projects.py`.It can automatically search microservice systems via Github Restful API.
+
+## References
+
+[1] R. Mo, Y. Cai, R. Kazman, L. Xiao, and Q. Feng, “Decoupling level: a new metric for architectural maintenance complexity,” in 2016 IEEE/ACM 38th International Conference on Software Engineering(ICSE), pp. 499–510, IEEE, 2016.
