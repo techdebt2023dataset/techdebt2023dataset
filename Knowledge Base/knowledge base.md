@@ -52,56 +52,56 @@ The metrics of all granularity are explained as follows.
 
 - class
 
-  | metric                 | description                                           | source |
-  | ---------------------- | ----------------------------------------------------- | ------ |
-  | CIS                    | Class interface size                                  | QMOOD  |
-  | NOM                    | Number of methods in the class                        | QMOOD  |
-  | NOP                    | Number of polymorphic methods                         | QMOOD  |
-  | NAC                    | Number of ancestor classes                            | QMOOD  |
-  | NDC                    | Number of descendent classes                          | QMOOD  |
-  | NOI                    | Number of import classes                              | ours   |
-  | NOID                   | Number of imported classes                            | ours   |
-  | CTM                    | Coupling through Message Passing                      | CK     |
-  | IDCC                   | Direct class coupling  intra module                   | QMOOD  |
-  | IODD                   | Out-degree dependency intra module                    | ours   |
-  | IIDD                   | In-degree dependency intra module                     | ours   |
-  | EDCC                   | Direct class coupling external modules                | QMOOD  |
-  | c_FAN_IN               | Number of class in-degree                             | CK     |
-  | c_FAN_OUT              | Number of class out-degree                            | CK     |
-  | CBC                    | Number of class dependencies                          | CK     |
-  | c_chm                  | The functional cohesion of class at the message layer | [4]    |
-  | c_chd                  | The functional cohesion of class at the domain layer  | [4]    |
-  | c_variablesQty         | Number of variables in the class                      | CK     |
-  | privateMethodsQty      | Number of private methods                             | CK     |
-  | protectedMethodsQty    | Number of protected methods                           | CK     |
-  | staticMethodsQty       | Number of static methods                              | CK     |
-  | defaultMethodsQty      | Number of default methods                             | CK     |
-  | abstractMethodsQty     | Number of abstract methods                            | CK     |
-  | finalMethodsQty        | Number of final methods                               | CK     |
-  | synchronizedMethodsQty | Number of synchronized methods                        | CK     |
-  | publicFieldsQty        | Number of public fields                               | CK     |
-  | privateFieldsQty       | Number of private fields                              | CK     |
-  | protectedFieldsQty     | Number of protected fields                            | CK     |
-  | staticFieldsQty        | Number of static fields                               | CK     |
-  | defaultFieldsQty       | Number of default fields                              | CK     |
-  | finalFieldsQty         | Number of final fields                                | CK     |
-  | synchronizedFieldsQty  | Number of synchronized fields                         | CK     |
-  | RFC                    | Response for a class                                  | CK     |
-  | NOF                    | Number of fields                                      | CK     |
-  | NOVM                   | Number of visible methods                             | CK     |
-  | NOSI                   | Number of static invocations                          | CK     |
-  | TCC                    | Tight class cohesion                                  | CK     |
-  | LCC                    | Loose class cohesion                                  | CK     |
-  | LCOM                   | Lack of cohesion of methods                           | CK     |
-  | LOCM*                  | Lack of cohesion of methods                           | CK     |
-  | WMC                    | Weight Method Per Class                               | CK     |
-  | c_modifiers            | Class modifiers                                       | CK     |
+  | metric                 | description                                           | source                     |
+  | ---------------------- | ----------------------------------------------------- | -------------------------- |
+  | CIS                    | Class interface size                                  | QMOOD                      |
+  | NOM                    | Number of methods in the class                        | QMOOD                      |
+  | NOP                    | Number of polymorphic methods                         | QMOOD                      |
+  | NAC                    | Number of ancestor classes                            | QMOOD                      |
+  | NDC                    | Number of descendent classes                          | QMOOD                      |
+  | NOI                    | Number of import classes                              | derived from NAC in QMOOD  |
+  | NOID                   | Number of imported classes                            | derived from NDC in QMOOD  |
+  | CTM                    | Coupling through Message Passing                      | CK                         |
+  | IDCC                   | Direct class coupling  intra module                   | QMOOD                      |
+  | IODD                   | Out-degree dependency intra module                    | derived from IDCC in QMOOD |
+  | IIDD                   | In-degree dependency intra module                     | derived from IICC in QMOOD |
+  | EDCC                   | Direct class coupling external modules                | QMOOD                      |
+  | c_FAN_IN               | Number of class in-degree                             | CK                         |
+  | c_FAN_OUT              | Number of class out-degree                            | CK                         |
+  | CBC                    | Number of class dependencies                          | CK                         |
+  | c_chm                  | The functional cohesion of class at the message layer | [4]                        |
+  | c_chd                  | The functional cohesion of class at the domain layer  | [4]                        |
+  | c_variablesQty         | Number of variables in the class                      | CK                         |
+  | privateMethodsQty      | Number of private methods                             | CK                         |
+  | protectedMethodsQty    | Number of protected methods                           | CK                         |
+  | staticMethodsQty       | Number of static methods                              | CK                         |
+  | defaultMethodsQty      | Number of default methods                             | CK                         |
+  | abstractMethodsQty     | Number of abstract methods                            | CK                         |
+  | finalMethodsQty        | Number of final methods                               | CK                         |
+  | synchronizedMethodsQty | Number of synchronized methods                        | CK                         |
+  | publicFieldsQty        | Number of public fields                               | CK                         |
+  | privateFieldsQty       | Number of private fields                              | CK                         |
+  | protectedFieldsQty     | Number of protected fields                            | CK                         |
+  | staticFieldsQty        | Number of static fields                               | CK                         |
+  | defaultFieldsQty       | Number of default fields                              | CK                         |
+  | finalFieldsQty         | Number of final fields                                | CK                         |
+  | synchronizedFieldsQty  | Number of synchronized fields                         | CK                         |
+  | RFC                    | Response for a class                                  | CK                         |
+  | NOF                    | Number of fields                                      | CK                         |
+  | NOVM                   | Number of visible methods                             | CK                         |
+  | NOSI                   | Number of static invocations                          | CK                         |
+  | TCC                    | Tight class cohesion                                  | CK                         |
+  | LCC                    | Loose class cohesion                                  | CK                         |
+  | LCOM                   | Lack of cohesion of methods                           | CK                         |
+  | LOCM*                  | Lack of cohesion of methods                           | CK                         |
+  | WMC                    | Weight Method Per Class                               | CK                         |
+  | c_modifiers            | Class modifiers                                       | CK                         |
 
 - method
 
   | metric                         | description                                  | source |
   | ------------------------------ | -------------------------------------------- | ------ |
-  | startLine                      | Line of code at the beginning of the method  | ours   |
+  | startLine                      | Line of code at the beginning of the method  | -      |
   | CBM                            | Coupling between methods                     | CK     |
   | m_FAN_IN                       | Number of method in-degree                   | CK     |
   | m_FAN_OUT                      | Number of method out-degree                  | CK     |

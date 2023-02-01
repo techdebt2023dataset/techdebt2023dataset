@@ -50,7 +50,9 @@ We conducted measurements for the latest versions for all of the collected proje
 
 ​	***evaluation results.csv**:* The SCORE and DL values of all projects are counted in the file. Since dbMIT considered multiple metrics, we computed the SCORE to obtain a weighted average measurement. We also computed the DL for these projects, a metric proposed by Mo et al.[1] to assess the architectural maintainability. A bigger value of DL or SCORE indicates a better maintainability of the software. Based on the results by DL and SCORE, we observed how the measurements will distribute over all of the subjects.
 
-​	**sample results:** We use `apollo`, `argouml`, `LineageOS`, `piggymetrics` and `servicecomb-java-chassis` as samples to show our evaluation results. In addition to piggymetrics , the other four projects are multi-version projects. In their folder, all versions evaluated are included. The evaluation results of each project or version contain two csv files: `measure_result_class.csv` 和`measure_result_method.csv`. There are 67 columns in `measure_result_class.csv`, including the calculation results of all project-level, module-level and class-level metrics. `measure_result_method.csv` contains 15 columns, including the calculation results of all method-level metrics.
+​	**sample results:** We use `apollo`, `argouml`, `LineageOS`, `piggymetrics` and `servicecomb-java-chassis` as samples to show our evaluation results. In addition to piggymetrics , the other four projects are multi-version projects. In their folder, all versions evaluated are included. 
+
+The evaluation results of each project or version contain two csv files: `measure_result_class.csv` 和`measure_result_method.csv`. There are 67 columns in `measure_result_class.csv`, including the calculation results of all project-level, module-level and class-level metrics. `measure_result_method.csv` contains 15 columns, including the calculation results of all method-level metrics.
 
 - #### Architecture Decay Detection Results
 
@@ -59,7 +61,19 @@ This directory contains two files: `detection results.csv` and `maintenance cost
 
 ​		***detection results.csv**:* This file contains statistical number of all root causes entities.We executed the dbMIT on multiple versions of the collected subjects. The problematic methods or classes can be detected by using detection rules defined in Section II of the paper. 
 
-​		***maintenance cost.csv**:* This file contains the maintenance cost of 6 projects. We employed three measures: `#commit`, `#changeLoc`, and `#author` as the ground-truth maintenance cost. `#commit` evaluates the number of commits that file entities participated in the software evolution. `#author` computes the number of developers by which a file entity was modified. `#changeLoc` counts the code churn (added or deleted code lines) of a file in the revision history. A bigger value indicates a higher maintenance cost. `mc(A)` denotes the result of the three measures averaged on a set of problematic entities, which are detected by dbMIT. `mc(B)`denotes the results by the three measures averaged on a set of non-problematic entities. `P = mc(A)/mc(B)` denotes the rate of `mc(A)` to `mc(B)`. If the value of P is bigger than 1.0, it means that the problematic code reported by dbMIT indeed incurred more maintenance efforts.
+​		***maintenance cost.csv**:* This file contains the maintenance cost of 6 projects. We employed three measures: `#commit`, `#changeLoc`, and `#author` as the ground-truth maintenance cost. 
+
+`#commit` evaluates the number of commits that file entities participated in the software evolution.
+
+`#author` computes the number of developers by which a file entity was modified. 
+
+`#changeLoc` counts the code churn (added or deleted code lines) of a file in the revision history. A bigger value indicates a higher maintenance cost. 
+
+`mc(A)` denotes the result of the three measures averaged on a set of problematic entities, which are detected by dbMIT. 
+
+`mc(B)`denotes the results by the three measures averaged on a set of non-problematic entities. 
+
+`P = mc(A)/mc(B)` denotes the rate of `mc(A)` to `mc(B)`. If the value of P is bigger than 1.0, it means that the problematic code reported by dbMIT indeed incurred more maintenance efforts.
 
 ## Demo Video
 
@@ -89,11 +103,12 @@ In this video, LineageOS is used as a case to introduce the four modules of dbMI
 
   Take LineageOS as an example. In the growth curve of the previous step, LineageOS-16.0 to LineageOS-17.1 experienced a decline in maintainability quality.
 
-  "com.android.server.stats" is the module with the most severe issue. We then detect problematic classes inside this module via class-level metrics of CBC, EDCC, c_FAN OUT. The results suggest that the class "com.android.server.stats.StatsCompanionServicem" frequently invokes the methods across module boundary, leading to a measurement increase. Next, We continue to pinpoint method-level code changes to explain the issue of this class. Method-level maintainability measures indicates that  "StatsCompanionService.pullAppOps" and "StatsCompanionService.pullRoleHolde" are the most severe entities, and each of them depends on more than 10 other modules to implement functionalities. 
+  "com.android.server.stats" is the module with the most severe issue. We then detect problematic classes inside this module via class-level metrics of CBC, EDCC, c_FAN OUT. The results suggest that the class "com.android.server.stats.StatsCompanionServicem" frequently invokes the methods across module boundary, leading to a measurement increase. 
 
-  The system can display the information of the two problematic methods that incur heavier maintainability issues.
+  Next, We continue to pinpoint method-level code changes to explain the issue of this class. Method-level maintainability measures indicates that  "StatsCompanionService.pullAppOps" and "StatsCompanionService.pullRoleHolde" are the most severe entities, and each of them depends on more than 10 other modules to implement functionalities. 
 
-  Users can employ this information to fix the issue.
+  The system can display the information of the two problematic methods that incur heavier maintainability issues. Users can employ this information to fix the issue.
+  
 
 ## Knowledge Base
 
