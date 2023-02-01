@@ -2,7 +2,7 @@
 
 Based on the maintainability model defined by ISO/IEC 25010, we construct a forest structure as a knowledge base, combing widely-adopted code-level metrics from the developer side. All the collected metrics correspond to the nodes in the forest structure, where each link between nodes denotes their relation.
 
-![metrics](.\img\metrics.png)
+![metrics](./img/metrics.png)
 
 ## Metrics
 
@@ -21,98 +21,100 @@ The metrics of all granularity are explained as follows.
 
   | metric | full name                    | description                                                  | source |
   | ------ | ---------------------------- | ------------------------------------------------------------ | ------ |
-  | score  | -                            | 对模块级指标进行融合得到模块可维护性的综合评分               |        |
-  | CHM    |                              | 项目中所有模块在消息层内聚程度的均值。                       |        |
-  | CHD    |                              | 项目中所有模块在领域层内聚程度的均值。                       |        |
-  | SMQ    | structural modularity        | 结构模块化程度。SMQ 值越大,说明模块的模块化程度越高。        |        |
-  | SPREAD | -                            | 度量模块中的实体在演化过程中横切协同变化集群的个数。SPREAD越小，总体模块性越好。 |        |
-  | FOCUS  | -                            | 度量模块化良好的程度。FOCUS越大，总体模块性越好。            |        |
-  | ICF    | intra co-change frequency    | 所有模块演化内部共变频率的平均值。ICF越高，总体模块内的实体更有可能一起演化。 |        |
-  | ECF    | external co-change frequency | 所有模块演化外部共变频率的平均值。ECF越低，总体跨模块边界的实体更有可能独立演化。 |        |
-  | REI    | ratio of ecf to icf          | 所有模块演化外部共变频率与内部共变频率的比值的平均值。REI越低，说明总体不同模块一起修改的可能性越低，各模块更有可能会独立演化、独立维护。 |        |
-  | ODD    | out-degree dependence        | ODD越大，总体耦合其他模块的程度越高，模块之间的动态交互度越高。 |        |
-  | IDD    | in-degree dependence         | IDD越大，总体被耦合的程度越高，模块间的动态交互程度越高。    |        |
+  | score  | -                            | Integrate module-level metrics to obtain a comprehensive score of maintainability | [3]    |
+  | CHM    |                              | The average cohesion of all modules in the project at the message level. | [4]    |
+  | CHD    |                              | The average cohesion of all modules in the project at the domain level. | [4]    |
+  | SMQ    | structural modularity        | The degree of structural modularization. The higher SMQ, the higher modularity of the module. | [4]    |
+  | SPREAD | -                            | Measure the number of cross-module co-change clusters in the evolution process of entities. The smaller SPREAD, the better overall modularity. | [5]    |
+  | FOCUS  | -                            | Measure the degree of good modularity. The larger FOCUS, the better overall modularity. | [5]    |
+  | ICF    | intra co-change frequency    | The average value of co-change frequency within the evolution of all modules. The higher ICF, the more likely the entities in the overall module will evolve together. | [4]    |
+  | ECF    | external co-change frequency | Average value of external co-chage frequency of all modules. The lower ECF, the more likely the entities across the module boundary will evolve independently. | [4]    |
+  | REI    | ratio of ecf to icf          | The average value of the ratio of the external covariant frequency to the internal covariant frequency of all modules. The lower REI, the lower the possibility that different modules can be modified together. Each module is more likely to evolve and maintain independently. | [4]    |
+  | ODD    | out-degree dependence        | The larger ODD, the higher the overall coupling degree of other modules, and the higher the dynamic interaction between modules. | [4]    |
+  | IDD    | in-degree dependence         | The larger IDD, the higher the degree of overall coupling, and the higher the degree of dynamic interaction between modules. | [4]    |
 
 - module
 
-  | metric | description                                                  |
-  | ------ | ------------------------------------------------------------ |
-  | scoh   | scoh越大，模块内的结构内聚程度越大。                         |
-  | scop   | scop越大，模块间的结构耦合程度越大。                         |
-  | odd    | odd越大，该模块耦合其他模块的程度越高，模块之间的动态交互度越高。 |
-  | idd    | idd越大，该模块被耦合的程度越高，模块间的动态交互程度越高。  |
-  | spread | 度量模块中的实体在演化过程中接触的共变集群个数。spread越小，模块性越好。 |
-  | focus  | 度量模块中的实体在演化过程中专注自身演进的程度。focus越大，模块性越好。 |
-  | icf    | icf越高，模块内的实体更有可能一起演化。                      |
-  | ecf    | ecf越低，跨模块边界的实体更有可能独立演化。                  |
-  | rei    | rei越低，说明不同模块一起修改的可能性越低，模块更有可能会独立演化、独立维护。 |
-  | DSM    | DSM越大，模块越复杂，与外部耦合的可能性越高。                |
-  | chm    | chm越大，模块在消息层内聚程度越高。                          |
-  | chd    | chd越大，模块在领域层内聚程度越高。                          |
+  | metric | description                                                  | source |
+  | ------ | ------------------------------------------------------------ | ------ |
+  | scoh   | The larger scoh, the greater structural cohesion within the module. | [4]    |
+  | scop   | The larger scop, the greater structural coupling between modules. | [4]    |
+  | odd    | The larger odd, the higher degree of coupling between the module and other modules. | [4]    |
+  | idd    | The larger idd, the higher degree of coupling of the module. | [4]    |
+  | spread | Measure the number of co-change clusters contacted by the module during the evolution process. The smaller spread, the better modularity. | [5]    |
+  | focus  | The degree to which entities in the measurement module focus on their own evolution during the evolution process. The larger focus, the better modularity. | [5]    |
+  | icf    | The higher icf, the more likely the entities in the module will evolve together. | [4]    |
+  | ecf    | The lower ecf, the more likely the entities that cross the module boundary will evolve independently. | [4]    |
+  | rei    | The lower rei, the lower the possibility of modifying different modules together, and the more likely the modules will evolve and maintain independently. | [4]    |
+  | DSM    | The larger DSM, the module becomes more complex , and the higher possibility of external coupling. | QMOOD  |
+  | chm    | The larger chm, the higher cohesion of the module in the message layer. | [4]    |
+  | chd    | The larger chd, the higher cohesion of the module at the domain level. | [4]    |
 
 - class
 
-  | metric                 | description                                 |
-  | ---------------------- | ------------------------------------------- |
-  | CIS                    | 类中公共接口数                              |
-  | NOM                    | 类中方法总数                                |
-  | NOP                    | 多态方法数量                                |
-  | NAC                    | 类继承树深度                                |
-  | NDC                    | 派生类个数                                  |
-  | NOI                    | 类导入依赖的个数                            |
-  | NOID                   | 类被导入依赖的个数                          |
-  | CTM                    | 调用方法个数(除自身类中方法)                |
-  | IDCC                   | 模块内耦合类数量                            |
-  | IODD                   | 模块内耦合其他类的数量                      |
-  | IIDD                   | 模块内被其他类耦合的数量                    |
-  | EDCC                   | 模块外耦合类数量                            |
-  | c_FAN_IN               | 类扇入                                      |
-  | c_FAN_OUT              | 类扇出                                      |
-  | CBC                    | 类依赖的数量(包含被依赖)                    |
-  | c_chm                  | 类在消息层的功能内聚度                      |
-  | c_chd                  | 类在领域层的功能内聚度                      |
-  | c_variablesQty         | 类中变量数量                                |
-  | privateMethodsQty      | 私有方法数量                                |
-  | protectedMethodsQty    | 保护方法数量                                |
-  | staticMethodsQty       | 静态方法数量                                |
-  | defaultMethodsQty      | 缺省方法数量                                |
-  | abstractMethodsQty     | 抽象方法数量                                |
-  | finalMethodsQty        | final方法数量                               |
-  | synchronizedMethodsQty | synchronized方法数量                        |
-  | publicFieldsQty        | 公有字段数量                                |
-  | privateFieldsQty       | 私有字段数量                                |
-  | protectedFieldsQty     | 保护字段数量                                |
-  | staticFieldsQty        | 静态字段数量                                |
-  | defaultFieldsQty       | 缺省字段数量                                |
-  | finalFieldsQty         | final字段数量                               |
-  | synchronizedFieldsQty  | synchronized字段数量                        |
-  | RFC                    | 类的响应数量(本地方法数量+调用外部方法数量) |
-  | NOF                    | 字段数量                                    |
-  | NOVM                   | 可见方法数量                                |
-  | NOSI                   | 静态方法调用数量                            |
-  | TCC                    | 紧类内聚(仅考虑可见方法的直接调用)          |
-  | LCC                    | 松类内聚(考虑可见方法的直接调用和间接调用)  |
-  | LCOM                   | 方法内聚性缺失                              |
-  | LOCM*                  | 方法内聚性缺失(标准化结果)                  |
-  | WMC                    | 类方法复杂度之和                            |
-  | c_modifiers            | 类中修饰符                                  |
+  | metric                 | description                                           | source |
+  | ---------------------- | ----------------------------------------------------- | ------ |
+  | CIS                    | Number of public interfaces in the class              | QMOOD  |
+  | NOM                    | Total number of methods in the class                  | QMOOD  |
+  | NOP                    | Number of polymorphic methods                         | QMOOD  |
+  | NAC                    | Number of class ancestors                             | QMOOD  |
+  | NDC                    | Number of class derivations                           | QMOOD  |
+  | NOI                    | Number of import                                      | ours   |
+  | NOID                   | Number of imported                                    | ours   |
+  | CTM                    | coupling with message                                 | CK     |
+  | IDCC                   | Number of coupling classes in the module              | QMOOD  |
+  | IODD                   | Number of other classes coupled in the module         | ours   |
+  | IIDD                   | Number of coupling by other classes in the module     | ours   |
+  | EDCC                   | Number of coupling classes outside the module         | QMOOD  |
+  | c_FAN_IN               | Number of class in-degree                             | CK     |
+  | c_FAN_OUT              | Number of class out-degree                            | CK     |
+  | CBC                    | Number of class dependencies                          | CK     |
+  | c_chm                  | The functional cohesion of class at the message layer | [4]    |
+  | c_chd                  | The functional cohesion of class at the domain layer  | [4]    |
+  | c_variablesQty         | Number of variables in the class                      | CK     |
+  | privateMethodsQty      | Number of private methods                             | CK     |
+  | protectedMethodsQty    | Number of protected methods                           | CK     |
+  | staticMethodsQty       | Number of static methods                              | CK     |
+  | defaultMethodsQty      | Number of default methods                             | CK     |
+  | abstractMethodsQty     | Number of abstract methods                            | CK     |
+  | finalMethodsQty        | Number of final methods                               | CK     |
+  | synchronizedMethodsQty | Number of synchronized methods                        | CK     |
+  | publicFieldsQty        | Number of public fields                               | CK     |
+  | privateFieldsQty       | Number of private fields                              | CK     |
+  | protectedFieldsQty     | Number of protected fields                            | CK     |
+  | staticFieldsQty        | Number of static fields                               | CK     |
+  | defaultFieldsQty       | Number of default fields                              | CK     |
+  | finalFieldsQty         | Number of final fields                                | CK     |
+  | synchronizedFieldsQty  | Number of synchronized fields                         | CK     |
+  | RFC                    | Response for class                                    | CK     |
+  | NOF                    | Number of fields                                      | CK     |
+  | NOVM                   | Number of visible methods                             | CK     |
+  | NOSI                   | Number of static method invokes                       | CK     |
+  | TCC                    | Tight class cohesion                                  | CK     |
+  | LCC                    | Loose class cohesion                                  | CK     |
+  | LCOM                   | Lack cohesion of methods                              | CK     |
+  | LOCM*                  | Lack cohesion of methods                              | CK     |
+  | WMC                    |                                                       | CK     |
+  | c_modifiers            |                                                       | CK     |
 
 - method
 
-  | metric                         | description                   |
-  | ------------------------------ | ----------------------------- |
-  | startLine                      | 方法开始位置                  |
-  | CBM                            | 方法依赖的数量(call/override) |
-  | m_FAN_IN                       | 方法扇入                      |
-  | m_FAN_OUT                      | 方法扇出                      |
-  | IDMC                           | 模块内耦合方法的数量          |
-  | EDMC                           | 模块外耦合方法的数量          |
-  | methodsInvokedQty              | 调用方法的数量                |
-  | methodsInvokedLocalQty         | 调用本地方法的数量            |
-  | methodsInvokedIndirectLocalQty | 间接调用本地方法的数量        |
-  | m_variablesQty                 | 方法中变量数量                |
-  | parametersQty                  | 方法参数数量                  |
-  | m_modifier                     | 方法修饰符                    |
+  | metric                         | description                                   | source |
+  | ------------------------------ | --------------------------------------------- | ------ |
+  | startLine                      | Method start position                         | ours   |
+  | CBM                            | Number of method dependencies                 | CK     |
+  | m_FAN_IN                       | method fan-in                                 | CK     |
+  | m_FAN_OUT                      | method fan-out                                | CK     |
+  | IDMC                           | Number of coupling methods within the module  | QMOOD  |
+  | EDMC                           | Number of coupling methods outside the module | QMOOD  |
+  | methodsInvokedQty              | Number of methods invokes                     | CK     |
+  | methodsInvokedLocalQty         | Number of methods local invokes               | CK     |
+  | methodsInvokedIndirectLocalQty | Number of methods indirect local invokes      | CK     |
+  | m_variablesQty                 | Number of variables in the method             | CK     |
+  | parametersQty                  | Number of method parameters                   | CK     |
+  | m_modifier                     | -                                             | CK     |
+
+
 
 ## Module-level Metrics Detail
 
@@ -143,3 +145,16 @@ The metrics of all granularity are explained as follows.
 ### complexity
 
 - DSM
+
+## References
+
+[1] S. R. Chidamber and C. F. Kemerer, “A metrics suite for object oriented design,” IEEE Transactions on software engineering, vol. 20, no. 6, pp. 476–493, 1994.
+
+[2] J. Bansiya and C. G. Davis, “A hierarchical model for object-oriented design quality assessment,” IEEE Transactions on software engineering,vol. 28, no. 1, pp. 4–17, 2002.
+
+[3] C. Zhong, S. Li, H. Zhang, and C. Zhang, “Evaluating granularity of microservices-oriented system based on bounded context,” Journal of Software, vol. 30, no. 10, pp. 3227–3241, 2019.
+
+[4] W. Jin, D. Zhong, Y. Zhang, M. Yang, and T. Liu, “Microservice maintainability measurement based on multi-sourced feature space,”Journal of Software, vol. 32, no. 5, pp. 1322–1340, 2021.
+
+[5] L. L. Silva, M. T. Valente, and M. d. A. Maia, “Assessing modularity using co-change clusters,” in Proceedings of the 13th international conference on Modularity, pp. 49–60, 2014.
+
