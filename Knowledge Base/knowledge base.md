@@ -21,51 +21,51 @@ The metrics of all granularity are explained as follows.
 
   | metric | full name                    | description                                                  | source |
   | ------ | ---------------------------- | ------------------------------------------------------------ | ------ |
-  | score  | -                            | Integrate module-level metrics to obtain a comprehensive score of maintainability | [3]    |
-  | CHM    |                              | The average cohesion of all modules in the project at the message level. | [4]    |
-  | CHD    |                              | The average cohesion of all modules in the project at the domain level. | [4]    |
+  | score  | -                            | Module-level metrics are fused to obtain a comprehensive score of maintainability. | [3]    |
+  | CHM    | CoHesion at message level    | The average cohesion of all modules in the project at the message level. | [4]    |
+  | CHD    | CoHesion at domain level     | The average cohesion of all modules in the project at the domain level. | [4]    |
   | SMQ    | structural modularity        | The degree of structural modularization. The higher SMQ, the higher modularity of the module. | [4]    |
-  | SPREAD | -                            | Measure the number of cross-module co-change clusters in the evolution process of entities. The smaller SPREAD, the better overall modularity. | [5]    |
-  | FOCUS  | -                            | Measure the degree of good modularity. The larger FOCUS, the better overall modularity. | [5]    |
-  | ICF    | intra co-change frequency    | The average value of co-change frequency within the evolution of all modules. The higher ICF, the more likely the entities in the overall module will evolve together. | [4]    |
-  | ECF    | external co-change frequency | Average value of external co-chage frequency of all modules. The lower ECF, the more likely the entities across the module boundary will evolve independently. | [4]    |
-  | REI    | ratio of ecf to icf          | The average value of the ratio of the external covariant frequency to the internal covariant frequency of all modules. The lower REI, the lower the possibility that different modules can be modified together. Each module is more likely to evolve and maintain independently. | [4]    |
-  | ODD    | out-degree dependence        | The larger ODD, the higher the overall coupling degree of other modules, and the higher the dynamic interaction between modules. | [4]    |
-  | IDD    | in-degree dependence         | The larger IDD, the higher the degree of overall coupling, and the higher the degree of dynamic interaction between modules. | [4]    |
+  | SPREAD | -                            | The average value of spread.                                 | [5]    |
+  | FOCUS  | -                            | The average value of focus.                                  | [5]    |
+  | ICF    | intra co-change frequency    | The average value of icf.                                    | [4]    |
+  | ECF    | external co-change frequency | The average value of ecf.                                    | [4]    |
+  | REI    | ratio of ecf to icf          | The average value of rei.                                    | [4]    |
+  | ODD    | out-degree dependence        | The average value of odd.                                    | [4]    |
+  | IDD    | in-degree dependence         | The average value of idd.                                    | [4]    |
 
 - module
 
   | metric | description                                                  | source |
   | ------ | ------------------------------------------------------------ | ------ |
-  | scoh   | The larger scoh, the greater structural cohesion within the module. | [4]    |
-  | scop   | The larger scop, the greater structural coupling between modules. | [4]    |
-  | odd    | The larger odd, the higher degree of coupling between the module and other modules. | [4]    |
-  | idd    | The larger idd, the higher degree of coupling of the module. | [4]    |
-  | spread | Measure the number of co-change clusters contacted by the module during the evolution process. The smaller spread, the better modularity. | [5]    |
-  | focus  | The degree to which entities in the measurement module focus on their own evolution during the evolution process. The larger focus, the better modularity. | [5]    |
-  | icf    | The higher icf, the more likely the entities in the module will evolve together. | [4]    |
-  | ecf    | The lower ecf, the more likely the entities that cross the module boundary will evolve independently. | [4]    |
-  | rei    | The lower rei, the lower the possibility of modifying different modules together, and the more likely the modules will evolve and maintain independently. | [4]    |
-  | DSM    | The larger DSM, the module becomes more complex , and the higher possibility of external coupling. | QMOOD  |
-  | chm    | The larger chm, the higher cohesion of the module in the message layer. | [4]    |
+  | scoh   | Structural cohesion. The larger scoh, the greater structural cohesion within module. | [4]    |
+  | scop   | Structural coupling. The larger scop, the greater structural coupling between modules. | [4]    |
+  | odd    | Out-degree dependence. The larger odd, the higher out-degree dependence in the module. | [4]    |
+  | idd    | In-degree dependence. The larger idd, the higher in-degree dependence in the module. | [4]    |
+  | spread | The number of cross-module co-change clusters in the evolution process.  The smaller spread, the better modularity. | [5]    |
+  | focus  | The degree of good modularity.  The larger focus, the better modularity. | [5]    |
+  | icf    | The value of co-change frequency intra modules. The higher icf, the more likely entities in the module will evolve together. | [4]    |
+  | ecf    | The value of co-change frequency external modules. The lower ecf, the more likely cross-module entities will evolve independently. | [4]    |
+  | rei    | The value of the ratio of ecf  to icf. The lower rei, the lower possibility that different modules can be modified together. Each module is more likely to evolve and maintain independently. | [4]    |
+  | DSM    | Design size in module. The larger DSM, the module is more complex , and the higher possibility of external coupling. | QMOOD  |
+  | chm    | The larger chm, the higher cohesion of the module at the message layer. | [4]    |
   | chd    | The larger chd, the higher cohesion of the module at the domain level. | [4]    |
 
 - class
 
   | metric                 | description                                           | source |
   | ---------------------- | ----------------------------------------------------- | ------ |
-  | CIS                    | Number of public interfaces in the class              | QMOOD  |
-  | NOM                    | Total number of methods in the class                  | QMOOD  |
+  | CIS                    | Class interface size                                  | QMOOD  |
+  | NOM                    | Number of methods in the class                        | QMOOD  |
   | NOP                    | Number of polymorphic methods                         | QMOOD  |
-  | NAC                    | Number of class ancestors                             | QMOOD  |
-  | NDC                    | Number of class derivations                           | QMOOD  |
-  | NOI                    | Number of import                                      | ours   |
-  | NOID                   | Number of imported                                    | ours   |
-  | CTM                    | coupling with message                                 | CK     |
-  | IDCC                   | Number of coupling classes in the module              | QMOOD  |
-  | IODD                   | Number of other classes coupled in the module         | ours   |
-  | IIDD                   | Number of coupling by other classes in the module     | ours   |
-  | EDCC                   | Number of coupling classes outside the module         | QMOOD  |
+  | NAC                    | Number of ancestor classes                            | QMOOD  |
+  | NDC                    | Number of descendent classes                          | QMOOD  |
+  | NOI                    | Number of import classes                              | ours   |
+  | NOID                   | Number of imported classes                            | ours   |
+  | CTM                    | Coupling through Message Passing                      | CK     |
+  | IDCC                   | Direct class coupling  intra module                   | QMOOD  |
+  | IODD                   | Out-degree dependency intra module                    | ours   |
+  | IIDD                   | In-degree dependency intra module                     | ours   |
+  | EDCC                   | Direct class coupling external modules                | QMOOD  |
   | c_FAN_IN               | Number of class in-degree                             | CK     |
   | c_FAN_OUT              | Number of class out-degree                            | CK     |
   | CBC                    | Number of class dependencies                          | CK     |
@@ -86,65 +86,33 @@ The metrics of all granularity are explained as follows.
   | defaultFieldsQty       | Number of default fields                              | CK     |
   | finalFieldsQty         | Number of final fields                                | CK     |
   | synchronizedFieldsQty  | Number of synchronized fields                         | CK     |
-  | RFC                    | Response for class                                    | CK     |
+  | RFC                    | Response for a class                                  | CK     |
   | NOF                    | Number of fields                                      | CK     |
   | NOVM                   | Number of visible methods                             | CK     |
-  | NOSI                   | Number of static method invokes                       | CK     |
+  | NOSI                   | Number of static invocations                          | CK     |
   | TCC                    | Tight class cohesion                                  | CK     |
   | LCC                    | Loose class cohesion                                  | CK     |
-  | LCOM                   | Lack cohesion of methods                              | CK     |
-  | LOCM*                  | Lack cohesion of methods                              | CK     |
-  | WMC                    |                                                       | CK     |
-  | c_modifiers            |                                                       | CK     |
+  | LCOM                   | Lack of cohesion of methods                           | CK     |
+  | LOCM*                  | Lack of cohesion of methods                           | CK     |
+  | WMC                    | Weight Method Per Class                               | CK     |
+  | c_modifiers            | Class modifiers                                       | CK     |
 
 - method
 
-  | metric                         | description                                   | source |
-  | ------------------------------ | --------------------------------------------- | ------ |
-  | startLine                      | Method start position                         | ours   |
-  | CBM                            | Number of method dependencies                 | CK     |
-  | m_FAN_IN                       | method fan-in                                 | CK     |
-  | m_FAN_OUT                      | method fan-out                                | CK     |
-  | IDMC                           | Number of coupling methods within the module  | QMOOD  |
-  | EDMC                           | Number of coupling methods outside the module | QMOOD  |
-  | methodsInvokedQty              | Number of methods invokes                     | CK     |
-  | methodsInvokedLocalQty         | Number of methods local invokes               | CK     |
-  | methodsInvokedIndirectLocalQty | Number of methods indirect local invokes      | CK     |
-  | m_variablesQty                 | Number of variables in the method             | CK     |
-  | parametersQty                  | Number of method parameters                   | CK     |
-  | m_modifier                     | -                                             | CK     |
-
-
-
-## Module-level Metrics Detail
-
-### functionality
-
-- chm
-- chd
-
-### coupling
-
-- scop
-- scoh
-- odd
-- idd
-
-### cohesion
-
-- scoh
-
-### evolution
-
-- rei
-- ecf
-- icf
-- spread
-- focus
-
-### complexity
-
-- DSM
+  | metric                         | description                                  | source |
+  | ------------------------------ | -------------------------------------------- | ------ |
+  | startLine                      | Line of code at the beginning of the method  | ours   |
+  | CBM                            | Coupling between methods                     | CK     |
+  | m_FAN_IN                       | Number of method in-degree                   | CK     |
+  | m_FAN_OUT                      | Number of method out-degree                  | CK     |
+  | IDMC                           | Direct method coupling  intra module         | QMOOD  |
+  | EDMC                           | Direct method coupling external modules      | QMOOD  |
+  | methodsInvokedQty              | Number of methods invocations                | CK     |
+  | methodsInvokedLocalQty         | Number of methods local invocations          | CK     |
+  | methodsInvokedIndirectLocalQty | Number of methods indirect local invocations | CK     |
+  | m_variablesQty                 | Number of variables in the method            | CK     |
+  | parametersQty                  | Number of parameters in the method           | CK     |
+  | m_modifier                     | Method modifiers                             | CK     |
 
 ## References
 
